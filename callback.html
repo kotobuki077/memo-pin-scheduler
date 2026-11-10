@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Memo Pin Scheduler — Authorization</title>
+<style>
+  body { font-family: system-ui, sans-serif; margin: 2rem auto; max-width: 640px; padding: 0 1rem; color: #222; }
+  code { display: block; word-break: break-all; background: #f4f1ea; border: 1px solid #ddd; border-radius: 8px; padding: 1rem; font-size: 1rem; }
+  .note { color: #555; }
+</style>
+</head>
+<body>
+<h1>Memo Pin Scheduler — Authorization</h1>
+<p class="note">If you reached this page during the authorization flow, the authorization code is shown below. The operator uses it once to obtain OAuth tokens for the operator's own Pinterest account.</p>
+<p><strong>Authorization code:</strong></p>
+<code id="code">(no code in this URL)</code>
+<p><strong>State:</strong></p>
+<code id="state">(none)</code>
+<script>
+  var p = new URLSearchParams(location.search);
+  if (p.get('code')) document.getElementById('code').textContent = p.get('code');
+  if (p.get('state')) document.getElementById('state').textContent = p.get('state');
+  if (p.get('error')) document.getElementById('code').textContent = 'Error: ' + p.get('error') + ' — ' + (p.get('error_description') || '');
+</script>
+</body>
+</html>
